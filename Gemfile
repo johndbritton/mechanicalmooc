@@ -3,6 +3,7 @@ gem 'sinatra'
 gem 'dm-core'
 gem 'dm-timestamps'
 gem 'dm-validations'
+gem 'dm-migrations'
 
 group :production do
     gem "pg"

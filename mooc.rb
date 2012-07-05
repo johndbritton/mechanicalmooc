@@ -2,7 +2,7 @@ require 'sinatra'
 require 'dm-core'
 require 'dm-timestamps'
 require 'dm-validations'
-require 'dm-postgres-adapter'
+require 'dm-migrations'
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/development.db")
 
