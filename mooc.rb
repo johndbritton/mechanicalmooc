@@ -3,6 +3,7 @@ require 'dm-core'
 require 'dm-timestamps'
 require 'dm-validations'
 require 'dm-migrations'
+require 'rest_client'
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/development.db")
 
@@ -34,10 +35,31 @@ class Group
 
   property :created_at, DateTime
   property :updated_at, DateTime
+  
+  after :create, :start_list
+  after :save, :upsert_list_members
+  def start_list
+    RestClient.post("https://api:#{ENV['MAILGUN_API_KEY']}" \
+                      "@api.mailgun.net/v2/lists",
+                      :address => list_address)
+  end
+  
+  def upsert_list_members
+    users.each do |u|
+      RestClient.post("https://api:#{ENV['MAILGUN_API_KEY']}" \
+                      "@api.mailgun.net/v2/lists/#{list_address}/members",
+                      :address => u.email,
+                      :upsert => 'yes')
+    end
+  end
+  
+  def list_address
+    "python-#{id}@mooc.mailgun.org"
+  end
 end
 
 DataMapper.finalize
-DataMapper.auto_migrate!
+DataMapper.auto_upgrade!
 
 post '/signup' do
   User.create(
