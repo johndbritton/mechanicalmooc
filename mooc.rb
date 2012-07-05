@@ -1,7 +1,5 @@
 require 'sinatra'
-require 'dm-core'
-require 'dm-timestamps'
-require 'dm-validations'
+require 'data_mapper'
 
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{Dir.pwd}/development.db")
 
