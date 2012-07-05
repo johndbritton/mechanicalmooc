@@ -96,17 +96,18 @@
         </div>
       </div>
       <div class="modal-body">
-          <form class="form-horizontal">
+          <form id="infoForm" method="post" action="/signup" class="form-horizontal">
+            <input id="hiddenEmailField" type="hidden" name="email"></hidden>
             <fieldset>
               <div class="control-group">
                 <label class="control-label"><i class="icon-group"></i> Group Work</label>
                 <div class="controls">
                   <label class="radio">
-                    <input type="radio" name="groupRadios" id="groupRadios1" value="group" checked>
+                    <input type="radio" name="groupRadios" id="groupRadios1" value="true" checked>
                     Match me up <em>with other folks</em>.
                   </label>
                   <label class="radio">
-                    <input type="radio" name="groupRadios" id="groupRadios2" value="alone">
+                    <input type="radio" name="groupRadios" id="groupRadios2" value="false">
                     I'm going to do this course <em>on my own</em>. Thanks though!
                   </label>
                   <p class="help-block">We'll match you up with a band of likeminded folks. You'll get extra support, help others when they get stuck, and make smart friends.</p>
@@ -231,7 +232,7 @@
           </form>
       </div>
       <div class="modal-footer">
-        <a href="#" class="btn btn-success"><i class="icon-ok"></i> Finish</a>
+        <a id="finish" href="#" class="btn btn-success"><i class="icon-ok"></i> Finish</a>
       </div>
     </div>
 
@@ -248,7 +249,7 @@
         <div class="span12">
           <form class="well">
             <div class="input-append">
-              <input name="email" class="input" type="text" placeholder="you@example.com"><button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#step2">Join</button>
+              <input id="email" name="email" class="input" type="text" placeholder="you@example.com"><button id="join" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#step2">Join</button>
             </div>
           </form>
         </div>
@@ -281,6 +282,16 @@
         var timezone = jstz.determine();
         $("#timezone").val(timezone.name());
         $("#timezoneHelp").append("We've pre-selected <span class=\"label label-info\">"+timezone.name()+"</span> using your clock.")
+        
+        $("#join").click(function(){
+          $("#hiddenEmailField").val($("#email").val());
+        });
+        
+        $(document).ready(function(){
+          $("#finish").click(function(){
+             $("#infoForm").submit();
+          });
+        });
       });
     </script>
   </body>
