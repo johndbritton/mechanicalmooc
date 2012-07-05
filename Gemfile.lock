@@ -23,6 +23,7 @@ GEM
       data_objects (= 0.10.8)
     do_sqlite3 (0.10.8)
       data_objects (= 0.10.8)
+    pg (0.14.0)
     rack (1.4.1)
     rack-protection (1.2.0)
       rack
@@ -41,4 +42,5 @@ DEPENDENCIES
   dm-sqlite-adapter
   dm-timestamps
   dm-validations
+  pg
   sinatra
