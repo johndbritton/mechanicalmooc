@@ -29,8 +29,8 @@ class User
   
   def send_welcome_email
     RestClient.post "https://api:#{ENV['MAILGUN_API_KEY']}"\
-    "@api.mailgun.net/v2/mooc.mailgun.org/messages",
-    :from => "The Machine <the-machine@mooc.mailgun.org>",
+    "@api.mailgun.net/v2/mechanicalmooc.org/messages",
+    :from => "The Machine <the-machine@mechanicalmooc.org>",
     :to => email,
     :subject => "Hello",
     :text => "Thanks for signing up"
@@ -53,10 +53,11 @@ class Group
   def start_list
     RestClient.post("https://api:#{ENV['MAILGUN_API_KEY']}" \
                       "@api.mailgun.net/v2/lists",
-                      :address => list_address)
+                      :address => list_address,
+                      :access_level => 'members')
     RestClient.post("https://api:#{ENV['MAILGUN_API_KEY']}" \
                     "@api.mailgun.net/v2/lists/#{list_address}/members",
-                    :address => "the-machine@mooc.mailgun.org",
+                    :address => "the-machine@mechanicalmooc.org",
                     :upsert => 'yes')
   end
   
@@ -70,7 +71,7 @@ class Group
   end
   
   def list_address
-    "python-#{id}@mooc.mailgun.org"
+    "python-#{id}@mechanicalmooc.org"
   end
 end
 
