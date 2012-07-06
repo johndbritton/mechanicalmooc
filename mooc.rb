@@ -77,6 +77,10 @@ end
 DataMapper.finalize
 DataMapper.auto_upgrade!
 
+get '/' do
+  File.read(File.join('public', 'index.html'))
+end
+
 post '/signup' do
   User.create(
     :email => params[:email],
