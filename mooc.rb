@@ -24,6 +24,17 @@ class User
 
   validates_uniqueness_of :email
   validates_format_of :email, :as => :email_address
+  
+  after :create, :send_welcome_email
+  
+  def send_welcome_email
+    RestClient.post "https://api:#{ENV['MAILGUN_API_KEY']}"\
+    "@api.mailgun.net/v2/mooc.mailgun.org/messages",
+    :from => "The Machine <the-machine@mooc.mailgun.org>",
+    :to => email,
+    :subject => "Hello",
+    :text => "Thanks for signing up"
+  end
 end
 
 class Group
@@ -38,10 +49,15 @@ class Group
   
   after :create, :start_list
   after :save, :upsert_list_members
+
   def start_list
     RestClient.post("https://api:#{ENV['MAILGUN_API_KEY']}" \
                       "@api.mailgun.net/v2/lists",
                       :address => list_address)
+    RestClient.post("https://api:#{ENV['MAILGUN_API_KEY']}" \
+                    "@api.mailgun.net/v2/lists/#{list_address}/members",
+                    :address => "the-machine@mooc.mailgun.org",
+                    :upsert => 'yes')
   end
   
   def upsert_list_members
