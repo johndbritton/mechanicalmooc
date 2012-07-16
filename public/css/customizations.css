@@ -41,15 +41,21 @@
   position: relative;
   overflow: visible;
 }
-#step2 .modal-body {
-  max-height: 500px;
+
+/* Form */
+
+#step2 .help-block{
+  margin-top: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: #999;
 }
 
-@media (max-width:767px){
+#step2 select{
+  margin-top: 5px;
 }
-@media (min-width:768px) and (max-width:979px){
-}
-@media (max-width:480px){
-}
-@media (max-width:767px){
+
+#infoForm .control-group.error .controls *{
+  color: black;
+  border-color: black;
 }
