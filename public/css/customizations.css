@@ -1,9 +1,12 @@
+/* Logo */
 .brand
 {
   background: url(../img/p2pu-logo.png) no-repeat 20px center;
   height: 20px;
   width: 64px;
 }
+
+/* Progress Bar */
 
 .progress-step .step-full,
 .progress-step .step-empty {
@@ -40,4 +43,13 @@
 }
 #step2 .modal-body {
   max-height: 500px;
+}
+
+@media (max-width:767px){
+}
+@media (min-width:768px) and (max-width:979px){
+}
+@media (max-width:480px){
+}
+@media (max-width:767px){
 }

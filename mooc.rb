@@ -16,6 +16,7 @@ class User
   property :email, String, :required => true
   property :group_work, Boolean, :default => true
   property :learning_style, String
+  property :expertise, String
   property :timezone, String
   property :image, String
 
@@ -87,6 +88,7 @@ post '/signup' do
     :email => params[:email],
     :group_work => params[:groupRadios],
     :learning_style => params[:styleRadios],
+    :expertise => params[:expertiseRadios],
     :timezone => params[:timezone],
     :image => params[:imageRadios]
   )
