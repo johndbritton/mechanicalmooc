@@ -333,6 +333,7 @@
           },
           errorPlacement: function() {},
           submitHandler: function(form) {
+            $("#finish").addClass("disabled").attr("disabled", "disabled");
             $.ajax({  
               type: "POST",  
               url: "/signup",  
