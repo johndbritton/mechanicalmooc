@@ -55,7 +55,15 @@
   margin-top: 5px;
 }
 
-#infoForm .control-group.error .controls *{
-  color: black;
-  border-color: black;
+#infoForm .control-group.error .controls label{
+  color: #333;
 }
+
+/* Success page */
+#step3 i{
+  font-size: 130px;
+}
+#step3 {
+  text-align: center;
+}
+
