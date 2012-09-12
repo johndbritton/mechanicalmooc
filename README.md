@@ -33,7 +33,9 @@ Users.each_slice(10) do |ten_users|
   g.save
 end
 ```
+# Emailing Users
 
+Each `Group` has a numeric id. Mailing list addresses are in the format python-`group.id`@mechanicalmooc.org. The group name and domain are currently hard-coded but can easily be extracted into environment varaibles for re-use. Only list members can post. To get around this `the-machine@mechanicalmooc.org` is added to every list. To send as the machine, just send an email from that address.
 # License
 
 The Mechanical MOOC is available under the MIT License. Check out [LICENSE](/LICENSE) for more info.
