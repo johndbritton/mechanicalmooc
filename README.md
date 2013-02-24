@@ -1,4 +1,4 @@
-# Derivative Works:
+# Derivative Works
 Check out the [network](https://github.com/johndbritton/mechanicalmooc/network).
 
 # About
