@@ -1,3 +1,6 @@
+# Derivitave Works:
+Check out the [network](https://github.com/johndbritton/mechanicalmooc/network).
+
 # About
 
 The Mechanical MOOC is a simple web application to help with running online classes via mailing lists. It allows you to coordinate many groups of arbitrary size, giving each group it's own discussion mailing list. It accepts sign ups, stores relevant meta-data, and can collect survey-type information. There is no built-in functionality to place participants into groups but it does provide all of the mailing list configuration and management once users are added to groups.
